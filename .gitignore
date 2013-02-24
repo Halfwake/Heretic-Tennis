@@ -1,0 +1,6 @@
+*.dll
+*.la
+*.a
+SDL
+resource
+ArtSource

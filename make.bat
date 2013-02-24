@@ -1,0 +1,1 @@
+gcc fourth_reich.c paddle.c -o FourthReich -L/usr/local/cross-tools/i686-w64-mingw32/lib -lmingw32 -mwindows -L./ -lSDL -lSDLmain
