@@ -1,2 +1,2 @@
 void quit(int success);
-void event_loop();
+void event_loop(Paddle* paddles[], Ball *ball);

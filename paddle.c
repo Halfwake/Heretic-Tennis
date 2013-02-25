@@ -7,7 +7,7 @@
 static const int default_paddle_width = 64;
 static const int default_paddle_height = 128;
 
-Paddle *create_paddle(int x, int y, bool player) {
+Paddle *create_paddle(int x, int y, int speed, bool player) {
 		Paddle *p = (Paddle*) malloc(sizeof(Paddle));
 		
 		SDL_Rect *pad_rect = (SDL_Rect*) malloc(sizeof(SDL_Rect));
@@ -18,9 +18,10 @@ Paddle *create_paddle(int x, int y, bool player) {
 		p->rect = pad_rect;
 		
 		p->player = player;
+		p->speed = speed;
 		return p;
 }
 
-void draw_paddle(Paddle paddle, SDL_Surface *surface) {
-	SDL_FillRect(surface, paddle.rect, 128); //colour is hard coded
+void draw_paddle(Paddle *paddle, SDL_Surface *surface) {
+	SDL_FillRect(surface, paddle->rect, 128); //colour is hard coded
 }
