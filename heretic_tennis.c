@@ -3,9 +3,9 @@
 
 #include "SDL/SDL.h"
 
-#include "heretic_tennis.h"
 #include "paddle.h"
 #include "ball.h"
+#include "heretic_tennis.h"
 
 static const int screen_width = 800;
 static const int screen_height = 600;
@@ -46,14 +46,14 @@ int main(int argc, char *argv[]) {
 		}
 		//draw_ball(ball)
 		SDL_Flip(screen);
-		
+		SDL_FillRect(SDL_GetVideoSurface(), NULL, 0);
 		event_loop(paddles, ball);
 	}
 	
 	return EXIT_FAILURE;
 }	
 
-void event_loop(Paddle* paddles[], Ball *ball) {
+void event_loop(Paddle **paddles, Ball *ball) {
 	SDL_Event event;
 	
 	while(SDL_PollEvent(&event)) {

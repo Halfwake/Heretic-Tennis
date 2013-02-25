@@ -1,3 +1,6 @@
+#ifndef BALL
+#define BALL
+
 typedef struct {
 	int x;
 	int y;
@@ -5,3 +8,5 @@ typedef struct {
 } Ball;
 
 Ball *create_ball(int x, int y);
+
+#endif

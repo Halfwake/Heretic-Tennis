@@ -25,3 +25,8 @@ Paddle *create_paddle(int x, int y, int speed, bool player) {
 void draw_paddle(Paddle *paddle, SDL_Surface *surface) {
 	SDL_FillRect(surface, paddle->rect, 128); //colour is hard coded
 }
+
+void paddle_move(Paddle *paddle, int dx, int dy) {
+	paddle->rect->x += dx;
+	paddle->rect->y += dy;
+}
