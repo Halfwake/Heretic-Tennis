@@ -5,13 +5,12 @@
 
 #include "paddle.h"
 #include "ball.h"
+#include "config.h"
 #include "heretic_tennis.h"
 
-static const int screen_width = 800;
-static const int screen_height = 600;
 static const int screen_depth = 8;
 static const int paddle_distance = 100;
-static const char *caption_title = "Staring Contest";
+static const char *caption_title = "Heretic Tennis";
 static const int player_paddle_index = 0;
 static const int opponent_paddle_index = 1;
 static const int player_start_speed = 15;
@@ -55,18 +54,22 @@ int main(int argc, char *argv[]) {
 
 void event_loop(Paddle **paddles, Ball *ball) {
 	SDL_Event event;
+	Paddle *player_paddle = paddles[player_paddle_index];
+	int player_speed = player_paddle->speed;
+	Uint8 *keystate = SDL_GetKeyState(NULL);
+	
+	
+	if(keystate[SDLK_UP]) {
+			paddle_move(player_paddle, 0, -player_speed /* *dt */);
+	}
+	else if(keystate[SDLK_DOWN]) {
+			paddle_move(player_paddle, 0, player_speed /* *dt */);
+	}
 	
 	while(SDL_PollEvent(&event)) {
 		switch(event.type) {
 			case SDL_QUIT:
 				quit(0);
-				break;
-			case SDL_KEYDOWN:
-				switch(event.key.keysym.sym) {
-					case SDLK_UP:
-					paddle_move(paddles[player_paddle_index], 0, -paddles[player_paddle_index]->speed /* *dt */);
-					break;
-				}
 				break;
 		}
 	}

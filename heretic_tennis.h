@@ -1,3 +1,5 @@
+#include "ball.h"
+
 #ifndef HERETIC
 #define HERETIC
 

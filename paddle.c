@@ -3,6 +3,7 @@
 #include "SDL/SDL.h"
 
 #include "paddle.h"
+#include "config.h"
 
 static const int default_paddle_width = 64;
 static const int default_paddle_height = 128;
@@ -27,6 +28,27 @@ void draw_paddle(Paddle *paddle, SDL_Surface *surface) {
 }
 
 void paddle_move(Paddle *paddle, int dx, int dy) {
-	paddle->rect->x += dx;
-	paddle->rect->y += dy;
+	Sint16 *paddle_x = &(paddle->rect->x);
+	Sint16 *paddle_y = &(paddle->rect->y);
+	Uint16 width = paddle->rect->w;
+	Uint16 height = paddle->rect->h;
+	
+	*paddle_x += dx;
+	//Keep in bounds for x
+	if(*paddle_x + width > screen_width) {
+		*paddle_x = screen_width - width;
+	}
+	else if(*paddle_x < 0) {
+		*paddle_x = 0;
+	}
+	
+	*paddle_y += dy;
+	//Keep in bounds for y
+	if(*paddle_y + height > screen_height) {
+		*paddle_y = screen_height - height;
+	}
+	else if(*paddle_y < 0) {
+		*paddle_y = 0;
+	}
+	
 }
