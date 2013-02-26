@@ -1,6 +1,7 @@
 *.dll
 *.la
 *.a
+*.exe
 SDL
 resource
 ArtSource
