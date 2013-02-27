@@ -3,9 +3,9 @@
 
 #include "SDL/SDL.h"
 
+#include "config.h"
 #include "paddle.h"
 #include "ball.h"
-#include "config.h"
 #include "heretic_tennis.h"
 
 static const int screen_depth = 8;
