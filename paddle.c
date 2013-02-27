@@ -33,7 +33,7 @@ void paddle_move(Paddle *paddle, int dx, int dy) {
 	Uint16 width = paddle->rect->w;
 	Uint16 height = paddle->rect->h;
 	
-	*paddle_x += dx;
+	*paddle_x += dx/* *dt */;
 	//Keep in bounds for x
 	if(*paddle_x + width > screen_width) {
 		*paddle_x = screen_width - width;
@@ -42,7 +42,7 @@ void paddle_move(Paddle *paddle, int dx, int dy) {
 		*paddle_x = 0;
 	}
 	
-	*paddle_y += dy;
+	*paddle_y += dy/* *dt */;
 	//Keep in bounds for y
 	if(*paddle_y + height > screen_height) {
 		*paddle_y = screen_height - height;
